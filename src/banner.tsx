@@ -15,16 +15,21 @@ export default function Banner() {
       variant="h1"
       actions={
         localStorage.getItem("token") ? (
-          <Button variant="primary" onClick={() => signout()}>
-            Sign Out
-          </Button>
+          <SpaceBetween direction="horizontal" size="l">
+            <Button variant="normal" onClick={() => signout()}>
+              <Link to={`/user`}>{`Update subscribed coin preferences`}</Link>
+            </Button>
+            <Button variant="primary" onClick={() => signout()}>
+              Sign Out
+            </Button>
+          </SpaceBetween>
         ) : (
           <SpaceBetween direction="horizontal" size="xs">
             <Button variant="link">
-              <Link to="/signin">SignIn</Link>
+              <Link to="/signin">Sign In</Link>
             </Button>
             <Button variant="link">
-              <Link to="/signup">SignUp</Link>
+              <Link to="/signup">Sign Up</Link>
             </Button>
           </SpaceBetween>
         )
