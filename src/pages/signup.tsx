@@ -14,12 +14,10 @@ export default function Signup() {
   const [responseMessage, setResponseMessage] = React.useState("");
   const [errorOccured, setErrorOccured] = React.useState(false);
   const [name, setName] = React.useState("");
-  const [dob, setDob] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
   const [nameError, setNameError] = React.useState("");
-  const [dobError, setDobError] = React.useState("");
   const [emailError, setEmailError] = React.useState("");
   const [passwordError, setPasswordError] = React.useState("");
 
@@ -30,11 +28,6 @@ export default function Signup() {
       error = true;
       setNameError("Name is required");
     } else setNameError("");
-
-    if (dob === "") {
-      error = true;
-      setDobError("DOB is required");
-    } else setDobError("");
 
     if (email === "") {
       error = true;
@@ -63,7 +56,7 @@ export default function Signup() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, dob, email, password }),
+      body: JSON.stringify({ name, email, password }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -136,13 +129,6 @@ export default function Signup() {
                 value={name}
                 type="text"
                 onChange={(event) => setName(event.detail.value)}
-              />
-            </FormField>
-            <FormField label="DOB" errorText={dobError}>
-              <Input
-                value={dob}
-                type="date"
-                onChange={(event) => setDob(event.detail.value)}
               />
             </FormField>
             <FormField label="Email" errorText={emailError}>

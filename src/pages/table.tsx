@@ -2,60 +2,12 @@
 import * as React from "react";
 import Table from "@cloudscape-design/components/table";
 import Box from "@cloudscape-design/components/box";
-import SpaceBetween from "@cloudscape-design/components/space-between";
 import Button from "@cloudscape-design/components/button";
 import TextFilter from "@cloudscape-design/components/text-filter";
-import Header from "@cloudscape-design/components/header";
 import Pagination from "@cloudscape-design/components/pagination";
 import CollectionPreferences from "@cloudscape-design/components/collection-preferences";
-import { Link } from "@cloudscape-design/components";
 import { useCollection } from "@cloudscape-design/collection-hooks";
-import banner from "./banner.tsx";
-
-let allItems = [
-  {
-    id: "1",
-    coinName: "Bitcoin",
-    lastPrice: "$ 10,000",
-    // yourMin: "$ 9,000",
-    yourMax: "$ 11,000",
-  },
-  {
-    id: "2",
-    coinName: "Ethereum",
-    lastPrice: "$ 1,000",
-    yourMin: "$ 900",
-    yourMax: "$ 1,100",
-  },
-  {
-    id: "3",
-    coinName: "Litecoin",
-    lastPrice: "$ 100",
-    yourMin: "$ 90",
-    yourMax: "$ 110",
-  },
-  {
-    id: "4",
-    coinName: "Ripple",
-    lastPrice: "$ 10",
-    yourMin: "$ 9",
-    yourMax: "$ 11",
-  },
-  {
-    id: "5",
-    coinName: "Bitcoin Cash",
-    lastPrice: "$ 1",
-    yourMin: "$ 0.9",
-    yourMax: "$ 1.1",
-  },
-  {
-    id: "6",
-    coinName: "Bitcoin SV",
-    lastPrice: "$ 0.1",
-    yourMin: "$ 0.09",
-    yourMax: "$ 0.11",
-  },
-];
+import banner from "../banner.js";
 
 function EmptyState({ title, subtitle, action }) {
   return (
@@ -160,15 +112,13 @@ export const collectionPreferencesProps = {
 
 export default function TableC() {
   const [allItems, setAllItems] = React.useState<
-    [
-      {
-        id: string;
-        coinName: string;
-        lastPrice: number;
-        yourMin: number;
-        yourMax: number;
-      }
-    ]
+    {
+      id: string;
+      coinName: string;
+      lastPrice: number;
+      yourMin: number;
+      yourMax: number;
+    }[]
   >([]);
 
   React.useEffect(() => {
@@ -212,6 +162,7 @@ export default function TableC() {
         <EmptyState
           title="No coins found"
           action={<Button>Search Coins</Button>}
+          subtitle={`Please try again with a different search term`}
         />
       ),
       noMatch: (
@@ -222,6 +173,7 @@ export default function TableC() {
               Clear filter
             </Button>
           }
+          subtitle={`Please try again with a different search term`}
         />
       ),
     },
@@ -265,7 +217,7 @@ export default function TableC() {
           <CollectionPreferences
             {...collectionPreferencesProps}
             preferences={preferences}
-            onConfirm={({ detail }) => setPreferences(detail)}
+            onConfirm={({ detail }) => setPreferences({ detail })}
           />
         }
       />

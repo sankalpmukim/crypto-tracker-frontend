@@ -5,9 +5,9 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import SignIn from "./signin.tsx";
-import SignUp from "./signup.tsx";
-import TableC from "./table.tsx";
+import SignIn from "./pages/signin";
+import SignUp from "./pages/signup";
+import TableC from "./pages/table";
 import ErrorPage from "./pages/error-page";
 
 const router = createBrowserRouter([
