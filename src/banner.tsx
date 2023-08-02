@@ -16,7 +16,7 @@ export default function Banner() {
       actions={
         localStorage.getItem("token") ? (
           <SpaceBetween direction="horizontal" size="l">
-            <Button variant="normal" onClick={() => signout()}>
+            <Button variant="normal">
               <Link to={`/user`}>{`Update subscribed coin preferences`}</Link>
             </Button>
             <Button variant="primary" onClick={() => signout()}>
