@@ -1,14 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import App from "./pages/App.js";
+import reportWebVitals from "./reportWebVitals.js";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import SignIn from "./pages/signin";
-import SignUp from "./pages/signup";
-import TableC from "./pages/table";
-import ErrorPage from "./pages/error-page";
+import SignIn from "./pages/signin.tsx";
+import SignUp from "./pages/signup.tsx";
+import TableC from "./pages/table.tsx";
+import ErrorPage from "./pages/error-page.tsx";
 
 const router = createBrowserRouter([
   {

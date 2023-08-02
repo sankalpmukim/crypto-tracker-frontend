@@ -7,7 +7,7 @@ import TextFilter from "@cloudscape-design/components/text-filter";
 import Pagination from "@cloudscape-design/components/pagination";
 import CollectionPreferences from "@cloudscape-design/components/collection-preferences";
 import { useCollection } from "@cloudscape-design/collection-hooks";
-import banner from "../banner.js";
+import banner from "../banner.tsx";
 
 function EmptyState({ title, subtitle, action }) {
   return (
@@ -131,7 +131,15 @@ export default function TableC() {
     })
       .then((res) => res.json())
       .then((data) => {
-        setAllItems(data.userCoins);
+        setAllItems(
+          data.userCoins.map((v) => ({
+            id: v.userId,
+            coinName: v.coinAssetType,
+            lastPrice: v.lastPrice,
+            yourMin: v.lowPrice,
+            yourMax: v.highPrice,
+          }))
+        );
       })
       .catch((e) => {
         console.log(e);
