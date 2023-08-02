@@ -21,8 +21,7 @@ export default function Signup() {
   const [emailError, setEmailError] = React.useState("");
   const [passwordError, setPasswordError] = React.useState("");
 
-  function signup(e) {
-    if (e) e.preventDefault();
+  function signup() {
     let error = false;
     if (name === "") {
       error = true;
@@ -73,7 +72,12 @@ export default function Signup() {
   }
 
   return (
-    <form onSubmit={(e) => signup(e)}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        signup();
+      }}
+    >
       <Form
         actions={
           <SpaceBetween direction="horizontal" size="xs">
@@ -94,13 +98,13 @@ export default function Signup() {
             onDismiss={() => setVisible(false)}
             visible={visible}
             footer={
-              <Box float="right">
+              <Box padding={"l"} float="right">
                 <SpaceBetween direction="horizontal" size="xs">
                   {errorOccured ? (
                     <Button
                       variant="normal"
                       onClick={() => {
-                        signup(null);
+                        signup();
                       }}
                     >
                       Retry

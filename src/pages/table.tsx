@@ -7,11 +7,11 @@ import TextFilter from "@cloudscape-design/components/text-filter";
 import Pagination from "@cloudscape-design/components/pagination";
 import CollectionPreferences from "@cloudscape-design/components/collection-preferences";
 import { useCollection } from "@cloudscape-design/collection-hooks";
-import banner from "../banner.tsx";
+import Banner from "../banner";
 
 function EmptyState({ title, subtitle, action }) {
   return (
-    <Box textAlign="center" color="inherit">
+    <Box padding={"m"} textAlign="center" color="inherit">
       <Box variant="strong" textAlign="center" color="inherit">
         {title}
       </Box>
@@ -189,25 +189,11 @@ export default function TableC() {
     sorting: {},
     selection: {},
   });
-  const { selectedItems } = collectionProps;
   return (
     <div>
-      {banner()}
+      <Banner />
       <Table
         {...collectionProps}
-        // selectionType=""
-        // header={
-        // <Header
-        //   counter={
-        //     selectedItems?.length
-        //       ? `(${selectedItems.length}/${allItems.length})`
-        //       : `(${allItems.length})`
-        //   }
-        // >
-        //   CryptoCurrencies
-        // </Header>
-        // banner
-        // }
         columnDefinitions={columnDefinitions}
         visibleColumns={preferences.visibleContent}
         items={items}
@@ -225,7 +211,7 @@ export default function TableC() {
           <CollectionPreferences
             {...collectionPreferencesProps}
             preferences={preferences}
-            onConfirm={({ detail }) => setPreferences({ detail })}
+            onConfirm={({ detail }) => setPreferences(detail as any)}
           />
         }
       />

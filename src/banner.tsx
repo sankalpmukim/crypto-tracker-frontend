@@ -4,7 +4,7 @@ import SpaceBetween from "@cloudscape-design/components/space-between";
 import Button from "@cloudscape-design/components/button";
 import { Link } from "react-router-dom";
 
-export default function banner() {
+export default function Banner() {
   const signout = () => {
     localStorage.removeItem("token");
     window.location.href = "/";

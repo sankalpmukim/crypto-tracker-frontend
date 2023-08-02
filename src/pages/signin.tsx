@@ -8,6 +8,7 @@ import Input from "@cloudscape-design/components/input";
 import Header from "@cloudscape-design/components/header";
 import Modal from "@cloudscape-design/components/modal";
 import Box from "@cloudscape-design/components/box";
+import { useNavigate } from "react-router-dom";
 
 export default function Signin() {
   const [visible, setVisible] = React.useState(false);
@@ -17,6 +18,7 @@ export default function Signin() {
   const [password, setPassword] = React.useState("");
   const [emailError, setEmailError] = React.useState("");
   const [passwordError, setPasswordError] = React.useState("");
+  const navigate = useNavigate();
 
   const signout = () => {
     localStorage.removeItem("token");
@@ -51,6 +53,7 @@ export default function Signin() {
           localStorage.setItem("token", data.token);
           setErrorOccured(false);
           setResponseMessage("Successfully signed in");
+          navigate("/table");
           return;
         } else {
           setErrorOccured(true);
@@ -77,15 +80,21 @@ export default function Signin() {
       <Form
         actions={
           <SpaceBetween direction="horizontal" size="xs">
-            <Button formAction="none" variant="link">
-              Cancel
+            <Button
+              formAction="none"
+              variant="link"
+              onClick={() => {
+                navigate("/signup");
+              }}
+            >
+              {`Sign Up`}
             </Button>
             <Button variant="primary">Submit</Button>
           </SpaceBetween>
         }
         header={
           <Header variant="h1" description="Join Us to Grow">
-            CoinAAAA
+            {`Crypto Tracker`}
           </Header>
         }
       >
@@ -94,13 +103,14 @@ export default function Signin() {
             onDismiss={() => setVisible(false)}
             visible={visible}
             footer={
-              <Box float="right">
+              <Box padding={"l"} float="right">
                 <SpaceBetween direction="horizontal" size="xs">
                   {errorOccured ? (
                     <Button
                       variant="normal"
                       onClick={() => {
                         signin();
+                        navigate("/table");
                       }}
                     >
                       Retry
