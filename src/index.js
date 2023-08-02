@@ -8,23 +8,28 @@ import "./index.css";
 import SignIn from "./signin.tsx";
 import SignUp from "./signup.tsx";
 import TableC from "./table.tsx";
+import ErrorPage from "./pages/error-page";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/signin",
     element: <SignIn />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/signup",
     element: <SignUp />,
+    errorElement: <ErrorPage />,
   },
   {
     path: "/table",
     element: <TableC />,
+    errorElement: <ErrorPage />,
   },
 ]);
 

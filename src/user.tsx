@@ -2,7 +2,7 @@ import * as React from "react";
 import FormField from "@cloudscape-design/components/form-field";
 import Input from "@cloudscape-design/components/input";
 
-export default () => {
+function User() {
   const [inputValue, setInputValue] = React.useState("");
   return (
     <FormField description="This is a description." label="Form field label">
@@ -12,4 +12,6 @@ export default () => {
       />
     </FormField>
   );
-};
+}
+
+export default User;
